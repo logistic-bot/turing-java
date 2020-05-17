@@ -1,0 +1,23 @@
+; Three-state busy beaver
+;
+;    States: 0, b, c, halt
+;    Initial state: 0
+;    Terminating states: halt
+;    Permissible symbols: 0, 1
+;    Blank symbol: 0
+;    Rules:
+;        (0, 0, 1, right, b)
+;        (0, 1, 1, left, c)
+;        (b, 0, 1, left, 0)
+;        (b, 1, 1, right, b)
+;        (c, 0, 1, left, b)
+;        (c, 1, 1, stay, halt)
+
+0 0 1 r b
+0 1 1 l c
+
+b 0 1 l 0
+b 1 1 r b
+
+c 0 1 l b
+c 1 1 * !
